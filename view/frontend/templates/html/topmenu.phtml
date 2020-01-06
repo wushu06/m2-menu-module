@@ -1,0 +1,19 @@
+<h4>topmenu</h4>
+<?php $columnsLimit = $block->getColumnsLimit() ?: 0; ?>
+<?php $_menu = $block->getHtml('level-top', 'submenu', $columnsLimit) ?>
+
+<?php
+echo '<pre>';
+var_dump($_menu);
+echo '</pre>';
+$helper = $block->getHelperData();
+?>
+    <nav class="bss-megamenu navigation"  style="display: block !important;">
+        <div id="defaultmenu" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav" data-mage-init='{"menu":{"responsive":true, "expanded":true, "position":{"my":"left top","at":"left bottom"}}}'>
+
+                <?php /* @escapeNotVerified */ echo $_menu; ?>
+                <?php /* @escapeNotVerified */ echo $block->getChildHtml(); ?>
+            </ul>
+        </div>
+    </nav>

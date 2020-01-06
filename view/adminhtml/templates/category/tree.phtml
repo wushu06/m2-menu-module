@@ -1,0 +1,93 @@
+
+
+
+<div class="col-md-4">
+
+
+   <!-- <div class="dd" id="nestable3" style="width: 100%">
+        <ol class="dd-list main-list">
+            <?php
+/*            $collection = $block->getMenuCollection();
+            $menus = [];
+            foreach ($collection as $menu){
+
+                if($menu->getName() && ($menu->getId() == $menu->getParentId() || $menu->getParentId() == 0)) :
+                    if($menu ->getType() == 'category'){
+                        $url = $block-> getCategoryUrlById($menu->getUrlKey());
+                    }else{
+                        $url = $menu->getUrlKey();
+                    }
+                    $menus[$menu ->getId()]['parent'] = ['id'=>$menu ->getId(),'name' => $menu->getName(), 'url' => $url, 'status' => $menu->getStatus() ];*/?>
+            <li class="dd-item dd3-item"
+                data-id="<?/*= $menu->getId() */?>"
+                data-name="<?/*= $menu->getName() */?>"
+                data-url="<?/*= $url */?>"
+                data-status="<?/*= $menu->getStatus() */?>"
+            >
+                <div class="dd-handle dd3-handle">Drag</div>
+                <div class="dd3-content"><?/*= $menu->getName().' id: '.$menu ->getId() */?></div>
+                <div class="dd-edit">&#9778;</div>
+                <?php
+/*                $childCollection = $block->getMenuCollectionById($menu->getId());
+                echo '<ol class="dd-list">';
+                foreach ($childCollection as $child) {
+
+                    if ($child->getName()) :
+                        if($child ->getType() == 'category'){
+                            $url = $block-> getCategoryUrlById($child->getUrlKey());
+                        }else{
+                            $url = $child->getUrlKey();
+                        }
+                        $menus[$menu ->getId()]['children'][$child->getId()] = ['id' => $child->getId(), 'name' => $child->getName(),'url' => $url, 'status' => $child->getStatus() ];
+
+                        */?>
+
+                            <li class="dd-item dd3-item"
+                                data-id="<?/*= $child->getId() */?>"
+                                data-name="<?/*= $child->getName() */?>"
+                                data-url="<?/*= $child->getUrlKey() */?>"
+                                data-status="<?/*= $child->getStatus() */?>">
+                                <div class="dd-handle dd3-handle">Drag</div>
+                                <div class="dd3-content"><?/*= $child->getName().' id: '.$child->getId() */?></div>
+                                <div class="dd-edit">&#9778;</div>
+                            </li>
+
+
+                    <?php
+/*                    endif;
+                }
+                echo '</ol>';
+                */?> <!-- end children -->
+            </li>
+            <?php
+/*                endif;
+
+                // var_dump(get_class_methods($menu));
+
+            }
+            */?>
+
+
+
+</div>
+<div id="m2-component2" data-bind="scope:'treeKoComponent'">
+    <!-- ko template: getTemplate() --><!-- /ko -->
+    <script type="text/x-magento-init">
+    {
+        "#m2-component2": {
+            "Magento_Ui/js/core/app": {
+               "components": {
+                    "treeKoComponent": {
+                        "component": "Tbb_Menu/js/tree",
+                        "template" : "Tbb_Menu/tree",
+                        "menuItemUrlLoad": "<?php echo $block->getMenuItemUrl('load'); ?>",
+                        "menuCollection": <?php echo $block->getMenuData(); ?>,
+                        "editPen": "<?php echo $this->getViewFileUrl('Tbb_Menu::css/edit.png'); ?>"
+
+                    }
+                }
+            }
+        }
+    }
+    </script>
+</div>

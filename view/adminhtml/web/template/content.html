@@ -1,0 +1,145 @@
+<form id="megamenu_content">
+
+	<div id="bss_notice"></div>
+
+	<input type="hidden" name="menu_id" data-bind="value: menuId" />
+	<input type="hidden" id="itemId" name="item_id" data-bind="value: itemId" />
+	<input type="hidden" name="store_id" data-bind="value: storeId"/>
+	<div class="section-config active">
+		<div class="entry-edit-head admin__collapsible-block" data-level="0" data-index="content">
+			<div class="fieldset-wrapper-title" tabindex="0">
+				<strong class="admin__collapsible-title">
+					<span data-bind="text: menuTitle"></span>
+					<span class="admin__page-nav-item-messages">
+					<span class="admin__page-nav-item-message _changed">
+						<span class="admin__page-nav-item-message-icon"></span>
+						<span data-bind="i18n: 'Changes have been made to this section that have not been saved.'" class="admin__page-nav-item-message-tooltip"></span>
+					</span>
+					<span class="admin__page-nav-item-message _error">
+						<span class="admin__page-nav-item-message-icon"></span>
+						<span data-bind="i18n: 'This tab contains invalid data. Please resolve this before saving.'" class="admin__page-nav-item-message-tooltip">.</span>
+					</span>
+					<span class="admin__page-nav-item-message-loader">
+						<span class="spinner">
+							<span data-repeat-index="0"></span><span data-repeat-index="1"></span><span data-repeat-index="2"></span><span data-repeat-index="3"></span><span data-repeat-index="4"></span><span data-repeat-index="5"></span><span data-repeat-index="6"></span><span data-repeat-index="7"></span>
+						</span>
+					</span>
+				</span>
+				</strong>
+			</div>
+		</div>
+	</div>
+	<fieldset class="admin__fieldset">
+		<div class="admin__field">
+			<label class="admin__field-label" for="megamenu_enable">
+				<span data-bind="i18n: 'Enable'"></span>
+			</label>
+			<div class="admin__field-control">
+				<select data-bind="options: enables , optionsText: 'title', optionsValue: 'id' , value: chosenEnable " class="admin__control-select form-field" name="status" id="megamenu_enable" aria-describedby="notice-KAVG6BW">
+				</select>
+			</div>
+		</div>
+
+		<div class="admin__field">
+			<label class="admin__field-label" for="megamenu_visibility">
+				<span data-bind="i18n: 'Visibility'"></span>
+			</label>
+			<div class="admin__field-control">
+				<select data-bind="options: visibility , optionsText: 'title', optionsValue: 'id' , value: chosenVisibility " class="admin__control-select form-field" name="visibility" id="megamenu_visibility" aria-describedby="notice-KAVG6BW">
+				</select>
+			</div>
+		</div>
+
+		<div class="admin__field">
+			<label class="admin__field-label" for="megamenu_menu_url_type">
+				<span data-bind="i18n: 'Menu Url Type'"></span>
+			</label>
+			<div class="admin__field-control">
+				<select
+						data-bind="options: menuUrlType , optionsCaption: 'Please select', optionsText: 'title', optionsValue: 'id' , value: chosenMenuUrlType "
+						class="admin__control-select form-field"
+						name="urlType"
+						id="megamenu_menu_url_type"
+						aria-describedby="notice-KAVG6BW"
+				>
+				</select>
+			</div>
+		</div>
+
+		<div class="admin__field bss_category_link">
+			<label class="admin__field-label" for="megamenu_category_link">
+				<span data-bind="i18n: 'Category Link'"></span>
+			</label>
+			<div class="admin__field-control">
+				<select
+						data-bind="options: categoriesLink2 , optionsCaption: 'Please select', optionsValue: 'id' , optionsText: 'title'  "
+						class="admin__control-select"
+						name="category_link"
+						id="megamenu_category_link"
+				>
+				</select>
+			</div>
+		</div>
+
+		<div class="admin__field bss_cms_link">
+			<label class="admin__field-label" for="megamenu_cms_link">
+				<span data-bind="i18n: 'Cms page Link'"></span>
+			</label>
+			<div class="admin__field-control">
+				<select
+						data-bind="options: cmsPages , optionsCaption: 'Please select', optionsValue: 'value' , optionsText: 'label'  "
+						class="admin__control-select"
+						name="cms_link"
+						id="megamenu_cms_link"
+				>
+				</select>
+			</div>
+		</div>
+
+		<div class="admin__field bss_custom_link">
+			<label class="admin__field-label" for="custom_link">
+				<span  data-bind="i18n: 'Custom Link'"></span>
+			</label>
+			<div class="admin__field-control">
+				<input type="text" data-bind="value: customLink" class="form-field" name="custom_link" id="custom_link">
+			</div>
+		</div>
+
+
+
+
+		<div class="admin__field bss_item_name">
+			<label class="admin__field-label"  for="name">
+				<span  data-bind="i18n: 'item name'"></span>
+			</label>
+			<div class="admin__field-control">
+				<input type="text" data-bind="value: itemName" name="name" id="name" class="form-field">
+			</div>
+		</div>
+
+		<div class="admin__field bss_class_name">
+			<label class="admin__field-label"  for="class_name">
+				<span  data-bind="i18n: 'item Class name'"></span>
+			</label>
+			<div class="admin__field-control">
+				<input type="text" data-bind="value: className" name="class_name" id="class_name" class="form-field">
+			</div>
+		</div>
+
+
+		<div class="admin__field bss_content_right"><label class="admin__field-label">
+		</label><div class="admin__field-control" data-bind="i18n: 'To create the best mega menu, please select Left Block and Right Block with suitable size. Read User Guide for more details!'"></div></div>
+
+	</fieldset>
+</form>
+
+<button id="addMenu" data-bind="click: addToMenu">Add to menu</button>
+<button id="editMenu" data-bind="click: editItem">Edit</button>
+<button id="deleteMenu" data-bind="click: deleteItem">Delete</button>
+<button id="cancelEdit" data-bind="click: cancelEditing">Cancel</button>
+
+<div data-role="spinner" data-component="category_form.category_form" class="admin__form-loading-mask megamenu-loading">
+	<div class="spinner">
+		<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+	</div>
+</div>

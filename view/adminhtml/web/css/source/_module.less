@@ -1,0 +1,48 @@
+/**
+ * BSS Commerce Co.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://bsscommerce.com/Bss-Commerce-License.txt
+ *
+ * @category   BSS
+ * @package    Bss_Megamenu
+ * @author     Extension Team
+ * @copyright  Copyright (c) 2016-2017 BSS Commerce Co. ( http://bsscommerce.com )
+ * @license    http://bsscommerce.com/Bss-Commerce-License.txt
+ */
+& when (@media-common = true) {
+    #bss_notice {
+        color: #4F8A10;
+        background-color: #DFF2BF;
+        padding: 10px;
+        display: none
+    }
+    .megamenu-loading {
+        display:none
+    }
+}
+#editMenu, #deleteMenu, #cancelEdit {
+    display: none;
+}
+.dd-edit {
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    z-index: 9;
+    cursor: pointer;
+    transform: translateY(-50%);
+}
+.edit-img {
+    background: url('../Tbb_Menu/css/edit.png') no-repeat;
+    width: 20px;
+    height: 20px;
+    display: block;
+    background-size: contain;
+}
+.dd-wrapper {
+    position: relative;
+}

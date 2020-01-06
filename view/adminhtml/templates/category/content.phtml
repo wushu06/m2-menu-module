@@ -1,0 +1,49 @@
+
+<div class="page-actions-placeholder"></div>
+<div data-ui-id="page-actions-toolbar-content-header" class="page-actions">
+    <div class="page-actions-inner" data-title="Catalog">
+        <div class="page-actions-buttons">
+
+            <div class="actions-split" title="Add Product" id="add_new_product">
+                <button data-ui-id="products-list-add-new-product-button" class="primary add" title="Add Product" id="save-menu-button" >
+                    <span>Save Menu</span>
+                </button>
+            </div>
+
+        </div>
+    </div>
+</div>
+<?php
+
+$storeId = $this->getRequest()->getParam('store');
+if ($storeId == null) {
+    $storeId = '0';
+}
+
+
+?>
+
+<div id="m2-component" data-bind="scope:'contentKoComponent'">
+    <!-- ko template: getTemplate() --><!-- /ko -->
+    <script type="text/x-magento-init">
+    {
+        "#m2-component": {
+            "Magento_Ui/js/core/app": {
+               "components": {
+                    "contentKoComponent": {
+                        "component": "Tbb_Menu/js/content",
+                        "template" : "Tbb_Menu/content",
+                        "storeId": "<?php echo $storeId ?>",
+                         "menuItemUrlLoad": "<?php echo $block->getMenuItemUrl('load'); ?>",
+                         "menuItemUrlSave": "<?php echo $block->getMenuItemUrl('save'); ?>",
+                         "menuItemUrlEdit": "<?php echo $block->getMenuItemUrl('edit'); ?>",
+                         "getCategoryCollectionJson": <?= json_encode($block->getCategoryCollectionJson()); ?>,
+                         "getCmsPagesJson": <?= json_encode($block->toOptionArray()); ?>
+                    }
+                }
+            }
+        }
+    }
+    </script>
+</div>
+

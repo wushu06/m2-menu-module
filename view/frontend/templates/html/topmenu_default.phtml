@@ -1,0 +1,108 @@
+<h4>default top menu</h4>
+
+<?php
+
+
+$helper = $block->getHelperData();
+$topMenuDefault = $block->getTopMenuDefault();
+?>
+
+    <?php $columnsLimit = $topMenuDefault->getColumnsLimit() ?: 0; ?>
+    <?php $_menu = $topMenuDefault->getHtml('level-top', 'submenu', $columnsLimit);
+
+    ?>
+
+    <nav class="tbb-navigationx"  style="display: block !important;">
+
+<div class="dd" id="nestable3" style="width: 100%">
+        <ul class="dd-listx main-listx">
+            <?php
+           $collection = $block->getHtml();
+            foreach ($collection as $menu) {
+
+                if ($menu->getName() && ($menu->getId() == $menu->getParentId() || $menu->getParentId() == 0)) :
+                    if ($menu->getType() == 'category') {
+                        $url = $helper->getCategoryUrlById($menu->getUrlKey());
+                    } else {
+                        $url = $menu->getUrlKey();
+                    }
+                    $visibility = $menu->getVisibility()  && $menu->getVisibility() == 1 ? 'visible' : 'hidden';
+                    ?>
+                <li class="dd-itemx dd3-item <?= $menu->getClassName().' '.$visibility  ?>">
+                    <div class="dd3-content">
+                        <a href="<?= $url ?>">
+                             <?= $menu->getName()?>
+                        </a>
+                    </div>
+                    <?php
+                    $childCollection = $helper->getMenuCollectionById($menu->getId());
+                    if($childCollection) :
+                    echo '<ol class="dd-listx">';
+                    foreach ($childCollection as $child) {
+
+                        if ($child->getName()) :
+                            if($child ->getType() == 'category_link'){
+                                $url = $helper-> getCategoryUrlById($child->getUrlKey());
+                            }else{
+                                $url = $child->getUrlKey();
+                            }
+                            $visibility = $child->getVisibility() && $child->getVisibility() == 1 ? 'visible' : 'hidden';
+                            ?>
+
+                            <li class="dd-item dd3-item <?= $child->getClassName().' '.$child->getVisibility()?>">
+                                <div class="dd3-content">
+                                    <a href="<?= $url ?>">
+                                        <?= $child->getName()?>
+                                    </a>
+                                </div>
+
+                            <?php
+                            $gChildCollection = $helper->getMenuCollectionById($child->getId());
+                            if($childCollection) :
+                                echo '<ol class="menu-level-3">';
+                                foreach ($gChildCollection as $g_child) {
+
+                                    if ($g_child->getName()) :
+                                        if($g_child ->getType() == 'category_link'){
+                                            $url = $helper-> getCategoryUrlById($g_child->getUrlKey());
+                                        }else{
+                                            $url = $g_child->getUrlKey();
+                                        }
+                                        $visibility = $g_child->getVisibility() && $g_child->getVisibility() == 1 ? 'visible' : 'hidden';
+                                        ?>
+
+                                        <li class="menu-level-3_list <?= $g_child->getClassName().' '.$g_child->getVisibility()?>">
+                                            <div class="">
+                                                <a href="<?= $url ?>">
+                                                    <?= $g_child->getName()?>
+                                                </a>
+                                            </div>
+
+                                        </li>
+                                    <?php
+                                    endif;
+                                }
+                                echo '</ol>';
+                            endif;
+                            ?> <!-- end children -->
+
+                            </li>
+                        <?php
+                        endif;
+                    }
+                    echo '</ol>';
+                    endif;
+                    ?> <!-- end children -->
+                    </li>
+
+                <?php
+                endif;
+            }
+
+            ?>
+
+        </ul>
+        </div>
+
+
+    </nav>

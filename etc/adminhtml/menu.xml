@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+    	<add id="Tbb_Menu::tbbmenu_main"
+             title="Tbb Menu"
+             module="Tbb_Menu"
+             sortOrder="16"
+             resource="Tbb_Menu::tbbmenu_main"
+        />
+    
+        <add
+                id="Tbb_Menu::tbbmenu"
+                title="Manage Menu Items"
+                translate="title"
+                module="Tbb_Menu"
+                sortOrder="50"
+                parent="Tbb_Menu::tbbmenu_main"
+                action="tbbmenu/category/"
+                resource="Tbb_Menu::tbbmenu"
+        />
+    </menu>
+</config>

@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+
+    <!--DATA-->
+    <preference for="Tbb\Menu\Api\Data\MenuInterface" type="Tbb\Menu\Model\Menu"/>
+
+
+    <!--REPOSITORY-->
+    <preference for="Tbb\Menu\Api\Repository\MenuRepositoryInterface" type="Tbb\Menu\Repository\MenuRepository"/>
+
+
+
+</config>

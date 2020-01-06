@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="admin-2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+      <!--  <css src="Tbb_Menu::css/jstree.min.css"/>-->
+        <css src="Tbb_Menu::css/nestable.css"/>
+    </head>
+    <body>
+        <referenceContainer name="page.main.actions">
+            <block class="Magento\Backend\Block\Store\Switcher" name="category.store.switcher" template="Magento_Backend::store/switcher.phtml"/> 
+            <block class="Magento\Framework\View\Element\Template" name="category3.store.switcher" template="Tbb_Menu::category/top.phtml"/>
+        </referenceContainer>
+
+        <referenceContainer name="content">
+            <block class="Tbb\Menu\Block\Adminhtml\Category\Content" name="tbbmenu.content" template="Tbb_Menu::category/content.phtml"/>
+        </referenceContainer>
+        <referenceContainer name="left">
+            <block class="Tbb\Menu\Block\Adminhtml\Category\Tree" name="tbbmenu.tree" template="Tbb_Menu::category/tree.phtml"/>
+        </referenceContainer>
+     <!--  <referenceContainer name="js">
+            <block class="Magento\Framework\View\Element\Template" template="Magento_Catalog::catalog/wysiwyg/js.phtml" name="catalog.wysiwyg.js"/>
+        </referenceContainer>-->
+    </body>
+</page>

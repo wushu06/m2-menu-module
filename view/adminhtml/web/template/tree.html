@@ -1,0 +1,73 @@
+<!-- ko if: nav.length <= 0 -->
+    <div><h2>Loading...</h2></div>
+<!-- /ko -->
+<div data-bind="foreach: {data: nav, as: 'menu'}">
+<div class="dd" id="nestable3" style="width: 100%" >
+    <ol class="dd-list main-list" data-bind="foreach: { data: menu, as: 'm' }">
+        <li class="dd-item dd3-item"
+            data-bind="attr: {
+              'data-id': parent.id,
+              'data-name': parent.name,
+              'data-url': parent.url,
+              'data-status': parent.status ,
+              'data-type' : parent.type,
+              'data-cat' : parent.cat,
+              'data-visibility': parent.visibility,
+              'data-class-name': parent.class_name
+              }"
+        >
+
+            <div class="dd-wrapper">
+                <div class="dd-handle dd3-handle">Drag</div>
+                 <div class="dd3-content" data-bind="text: parent.name"></div>
+                <div class="dd-edit"  data-bind="click: $parents[1].editMenuItem"><i class="edit-img"></i></div>
+            </div>
+            <!-- ko if: (m.children) -->
+            <ol class="dd-list" data-bind="foreach: { data:  Object.values(m.children), as: 'child' }">
+                <li class="dd-item dd3-item"
+                    data-bind="attr: {
+                      'data-id': child.id,
+                      'data-name': child.name,
+                      'data-url': child.url,
+                      'data-status': child.status ,
+                      'data-type' : child.type,
+                      'data-cat' : child.cat,
+                      'data-visibility': child.visibility,
+                      'data-class-name': child.class_name
+                      }">
+
+                    <div class="dd-wrapper">
+                        <div class="dd-handle dd3-handle">Drag</div>
+                        <div class="dd3-content"  data-bind="text: child.name"></div>
+                        <div class="dd-edit "  data-bind="click: $parents[2].editMenuItem"><i class="edit-img"></i></div>
+                    </div>
+                    <!-- ko if: (child.children) -->
+                    <ol class="dd-list" data-bind="foreach: { data:  Object.values(child.children), as: 'g_child' }">
+                        <li class="dd-item dd3-item">
+
+
+                            <div class="dd-wrapper">
+                                <div class="dd-handle dd3-handle">Drag</div>
+                                <div class="dd3-content"  data-bind="text: g_child.name"></div>
+                                <div class="dd-edit "  data-bind="click: $parents[3].editMenuItem"><i class="edit-img"></i></div>
+                            </div>
+
+                        </li>
+                    </ol>
+                    <!-- /ko -->
+
+                </li>
+            </ol>
+            <!-- /ko -->
+
+        </li>
+    </ol>
+
+</div>
+</div>
+
+<div data-role="spinner" data-component="category_form.category_form" class="admin__form-loading-mask megamenu-loading">
+    <div class="spinner">
+        <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+    </div>
+</div>
